@@ -1,7 +1,5 @@
-import Head from 'next/head';
-
-import { Text } from '@/components/atoms';
+import { Home as HomeTemplate } from '@/components/templates';
 
 export default function Home() {
-  return <Text typo="title"> hi </Text>;
+  return <HomeTemplate />;
 }
