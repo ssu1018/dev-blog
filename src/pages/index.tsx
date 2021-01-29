@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+
+import { Text } from '@/components/atoms';
 
 export default function Home() {
-  return <div>ㅎㅇㅎㅇ</div>;
+  return <Text typo="title"> hi </Text>;
 }
