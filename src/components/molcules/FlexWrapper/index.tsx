@@ -4,27 +4,27 @@
 import { ReactNode } from 'react';
 import { jsx, css } from '@emotion/react';
 
+type directionType = 'row' | 'col';
+
 interface FlexWrapperProps {
   children: ReactNode;
-  align: 'start' | 'end';
+  direction: directionType;
   className?: string;
 }
 
-const alignStyle = (align: 'start' | 'end') => {
-  const alignType = align === 'start' ? 'flex-start' : 'flex-end';
-  return css({
-    justifySelf: alignType,
-  });
+const directionStyle = (direction: directionType) => {
+  return css`
+    flex-flow: ${direction} wrap;
+  `;
 };
 
 const style = css`
   display: flex;
-  flex-flow: row wrap;
 `;
 
-function FlexWrapper({ children, align, className }: FlexWrapperProps) {
+function FlexWrapper({ children, direction, className }: FlexWrapperProps) {
   return (
-    <div css={[alignStyle(align), style]} className={className}>
+    <div css={[directionStyle(direction), style]} className={className}>
       {children}
     </div>
   );

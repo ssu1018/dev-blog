@@ -10,7 +10,6 @@ const BackgroundImgBox = styled.div`
   width: 100%;
   height: 570px;
   background-size: 100% 100%;
-  z-index: 1;
 `;
 
 const BlurBox = styled.div`
