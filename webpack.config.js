@@ -7,4 +7,8 @@ module.exports = {
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+  },
 };

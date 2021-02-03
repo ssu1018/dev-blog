@@ -1,28 +1,18 @@
 import { css } from '@emotion/react';
 export default css`
-  font-size: 1.1rem;
-  line-height: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-family: "'Noto Sans Korean', 'Fira Sans', sans-serif";
+
   p {
     margin: 1em 0;
-    font-size: 1.1rem;
-    line-height: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
   }
   a {
-    color: #0645ad;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #06e;
-  }
-
-  a:active {
-    color: #faa700;
-  }
-
-  a:hover,
-  a:active {
+    color: indigo;
     outline: 0;
+    font-weight: 600;
   }
 
   ::-moz-selection {
@@ -30,54 +20,59 @@ export default css`
     color: #000;
   }
 
-  ::selection {
-    background: rgba(0, 255, 0, 0.3);
-    color: #000;
+  *::selection {
+    color: white;
+    background-color: gray;
   }
 
   img {
     max-width: 100%;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: normal;
-    color: #111;
-    line-height: 1em;
-  }
-
-  h4,
-  h5,
-  h6 {
-    font-weight: bold;
-  }
-
   h1 {
     font-size: 2.5em;
+    margin: 1.5rem 0;
   }
 
   h2 {
     font-size: 2em;
+    margin: 2.5rem 0;
   }
 
   h3 {
-    font-size: 1.5em;
+    margin: 1rem 0 0.7rem 0;
+    font-size: 1.8rem;
   }
 
   h4 {
-    font-size: 1.2em;
+    font-size: 1.4em;
   }
 
   h5 {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 
-  h6 {
-    font-size: 0.9em;
+  code {
+    font-family: '"Lato",sans-serif';
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  pre {
+    line-height: 1.4rem;
+    code {
+      font-size: 0.9rem;
+      background: rgb(39, 44, 53);
+      font-family: 'Fira Code';
+      color: rgb(224, 224, 224);
+      font-weight: 500;
+    }
+    background: rgb(39, 44, 53);
+    padding: 1.5em;
+    margin: 2em 0px;
+    overflow: auto;
+    border-radius: 0.6em;
+    tab-size: 4;
   }
 
   blockquote {
@@ -96,8 +91,6 @@ export default css`
     padding: 0;
   }
 
-  pre,
-  code,
   kbd,
   samp {
     color: #000;
@@ -105,12 +98,6 @@ export default css`
     _font-family: 'courier new', monospace;
     font-size: 1rem;
     line-height: 1.2rem;
-  }
-
-  pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
   }
 
   b,
@@ -143,18 +130,14 @@ export default css`
     vertical-align: baseline;
   }
 
-  sup {
-    top: -0.5em;
-  }
-
-  sub {
-    bottom: -0.25em;
-  }
-
   ul,
   ol {
-    margin: 1em 0;
-    padding: 0 0 0 2em;
+    margin: 0.5rem 0;
+    padding: 0 0 0 1.5rem;
+  }
+
+  li {
+    list-style-type: circle;
   }
 
   dd {
