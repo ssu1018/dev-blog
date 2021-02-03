@@ -1,5 +1,5 @@
 import '@emotion/react';
-import theme from '../styles/theme';
+import theme from '../src/styles/theme';
 
 interface Font {
   fontFamily: string;
@@ -9,22 +9,6 @@ interface Font {
 }
 
 type customTheme = typeof theme;
-
-// interface customTheme {
-//   palette: {
-//     primary: string;
-//     lightgray: string;
-//     gray: string;
-//     white: string;
-//     indigo: string;
-//   };
-//   typography: {
-//     title: Font;
-//     subheading: Font;
-//     whiteHeading: Font;
-//     descript: Font;
-//   };
-// }
 
 declare module '@emotion/react' {
   // export interface Theme extends customTheme {}
