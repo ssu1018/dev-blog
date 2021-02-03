@@ -1,22 +1,19 @@
 import styled from '@emotion/styled';
 
-import { Text } from '@/components/atoms';
-import { Post } from '@/components/organisms';
-
+import { IPostDataProp } from '@/components/organisms';
+import { Post } from '@/components/molcules';
+import { TCategoryName } from '@/constants/categories';
 interface randomPostsProp {
-  randomPosts: {
-    posts: typeof Post[];
-  };
+  randomPosts: IPostDataProp[];
+  category: TCategoryName;
 }
 
-export default function PostFeed({ randomPosts }: randomPostsProp) {
-  // const renderedPosts =
+export default function PostFeed({ randomPosts, category }: randomPostsProp) {
+  const renderedPosts = randomPosts.map((post) => (
+    <Post post={post} key={post.title} category={category} />
+  ));
 
-  return (
-    <WhiteContainer>
-      <Text typo="subheading"> Random Posts </Text>
-    </WhiteContainer>
-  );
+  return <WhiteContainer>{renderedPosts}</WhiteContainer>;
 }
 
 const WhiteContainer = styled.div`
@@ -28,7 +25,6 @@ const WhiteContainer = styled.div`
   box-sizing: border-box;
   background-color: white;
   border-radius: 5px;
-  position: absolute;
   margin: 60px 0 0 15%;
   box-sizing: border-box;
 `;
