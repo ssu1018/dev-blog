@@ -19,6 +19,7 @@ const FooterWrapper = styled.footer`
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 `;
 
 const FooterItem = styled.div`
