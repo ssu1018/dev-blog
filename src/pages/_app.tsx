@@ -1,6 +1,6 @@
 import { ThemeProvider, Global } from '@emotion/react';
-import theme from 'styles/theme';
-import reset from 'styles/reset';
+import theme from '@/styles/theme';
+import reset from '@/styles/reset';
 import { Header, Footer } from '@/components/organisms';
 import type { AppProps } from 'next/app';
 
@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <Global styles={reset} />
       <Header />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <Footer />
     </ThemeProvider>
   );
