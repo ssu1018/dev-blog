@@ -4,67 +4,67 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 
-interface SortedPostType extends MatterResultType {
-  id: string;
-}
+import { categories, TCategoryName } from '@/constants/categories';
 
-interface MatterResultType {
+export interface IMatterDataProps {
   title: string;
   description: string;
   date: string;
-  tags: string[];
+  slug: string;
+  tags: string;
 }
 
-export interface PostIdsType {
-  params: {
-    id: string;
-  };
-}
-
-export interface PostDataType extends SortedPostType {
+export interface IPostDataProps extends IMatterDataProps {
+  slug: string;
   contentHtml: string;
 }
 
-const postsDirectory: string = path.join(process.cwd(), 'src', 'posts');
-console.log(postsDirectory);
-export function getSortedPostsData(): SortedPostType[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+export interface IPostPathProps {
+  params: {
+    slug: string;
+  };
+}
 
-  const allPostsData: SortedPostType[] = fileNames.map((fileName) => {
-    const id: string = fileName.replace(/\.md$/, '');
-    const fullPath: string = path.join(postsDirectory, fileName);
+export const postsDirectory: string = path.join(process.cwd(), 'src', 'posts');
+
+export function getCategoryPosts(categoryName: string): IMatterDataProps[] {
+  const fileNames: string[] = fs.readdirSync(
+    path.join(postsDirectory, categoryName)
+  );
+
+  const allPostsData = fileNames.map((fileName) => {
+    const fullPath: string = path.join(postsDirectory, categoryName, fileName);
     const fileContents: string = fs.readFileSync(fullPath, 'utf8');
-
-    const matterData: MatterResultType = matter(fileContents)
-      .data as MatterResultType;
-
-    return {
-      id,
-      ...matterData,
-    };
+    const matterData: IMatterDataProps = matter(fileContents)
+      .data as IMatterDataProps;
+    return matterData;
   });
 
-  return allPostsData.sort((a: SortedPostType, b: SortedPostType): number =>
-    a.date.localeCompare(b.date)
-  );
+  return allPostsData.sort((a, b): number => -a.date.localeCompare(b.date));
 }
 
-export function getAllPostIds(): PostIdsType[] {
-  const fileNames: string[] = fs.readdirSync(postsDirectory);
+export function getCategoryPostsPath(
+  categoryName: TCategoryName
+): IPostPathProps[] {
+  const postsData: IMatterDataProps[] = getCategoryPosts(categoryName);
 
-  return fileNames.map(
-    (fileName): PostIdsType => ({
-      params: {
-        id: fileName.replace(/\.md$/, ''),
-      },
-    })
-  );
+  return postsData.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
 }
 
-export async function getPostData(id: string): Promise<PostDataType> {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+export async function getPostData(
+  categoryName: TCategoryName,
+  slug: string
+): Promise<IPostDataProps> {
+  const fullPath: string = path.join(
+    postsDirectory,
+    categoryName,
+    `${slug}.md`
+  );
+  const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 
   const matterResult = matter(fileContents);
 
@@ -73,10 +73,52 @@ export async function getPostData(id: string): Promise<PostDataType> {
     .process(matterResult.content);
 
   const contentHtml: string = processedContent.toString();
-  // Combine the data with the id
+  const matterData: IMatterDataProps = matterResult.data as IMatterDataProps;
+
   return {
-    id,
     contentHtml,
-    ...(matterResult.data as MatterResultType),
+    ...matterData,
   };
+}
+
+export function getPostsWtihTag(tag: string) {
+  const postsData: IMatterDataProps[] = getAllPosts();
+
+  const filtedPostsWithTag: IMatterDataProps[] = postsData.filter((post) =>
+    post.tags.includes(tag)
+  );
+
+  return filtedPostsWithTag;
+}
+
+interface ICategoriesObjProps {
+  [x: string]: string[];
+}
+
+export function getAllPosts(): IMatterDataProps[] {
+  const categoriesObj: ICategoriesObjProps = categories.reduce(
+    (obj, category) => {
+      const categoryName = category.info.name;
+      return {
+        ...obj,
+        [categoryName]: fs.readdirSync(path.join(postsDirectory, categoryName)),
+      };
+    },
+    {}
+  );
+
+  const allPostsData: IMatterDataProps[] = Object.entries(categoriesObj)
+    .map(([category, files]) =>
+      files.map((fileName) => {
+        const fullPath: string = path.join(postsDirectory, category, fileName);
+        const fileContents: string = fs.readFileSync(fullPath, 'utf8');
+        const matterData: IMatterDataProps = matter(fileContents)
+          .data as IMatterDataProps;
+
+        return matterData;
+      })
+    )
+    .flat();
+
+  return allPostsData.sort((a, b): number => -a.date.localeCompare(b.date));
 }
