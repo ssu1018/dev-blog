@@ -4,7 +4,7 @@
 import { ReactNode } from 'react';
 import { jsx, css } from '@emotion/react';
 
-type directionType = 'row' | 'col';
+type directionType = 'row' | 'column';
 
 interface FlexWrapperProps {
   children: ReactNode;
