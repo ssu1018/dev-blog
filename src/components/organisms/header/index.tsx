@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Text } from '@/components/atoms';
 import { TextWrapper } from '@/components/molcules';
+import { Page } from '@/constants/pageRoute';
 
 import Link from 'next/link';
 
@@ -10,12 +11,12 @@ function Header() {
       <Text typo="title">
         <Link href="/">정희수 블로그</Link>
       </Text>
-      <TextWrapper align="end">
+      <TextWrapper direction="col">
         <Text typo="subheading" mr="20px">
-          <Link href="/about">about</Link>
+          <Link href={Page.ABOUT.path}>{Page.ABOUT.name}</Link>
         </Text>
         <Text typo="subheading" mr="20px">
-          <Link href="/categories">categories</Link>
+          <Link href={Page.CATEGORY.path}>{Page.CATEGORY.name}</Link>
         </Text>
       </TextWrapper>
     </HeaderWrapper>
@@ -31,10 +32,6 @@ const HeaderWrapper = styled.header`
   flex-flow: row, nowrap;
   align-items: center;
   justify-content: space-between;
-`;
-
-const CustomText = styled.div`
-  color: red;
 `;
 
 export default Header;
