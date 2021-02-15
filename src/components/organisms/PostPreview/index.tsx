@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 import { Text } from '@/components/atoms';
 import { TagWrapper, renderedTags, TextWrapper } from '@/components/molcules';
 
@@ -6,20 +7,21 @@ interface IPostPreviewProps {
   title: string;
   description: string;
   tags: string;
+  link: string;
 }
 
 export default function PostPreview({
   title,
   description,
   tags,
+  link,
 }: IPostPreviewProps) {
   return (
     <PostPreviewWrapepr>
-      <Image href="#" />
       <TextWrapper direction="column">
         <TagWrapper>{renderedTags(tags)}</TagWrapper>
         <Text typo="title" mt="10px">
-          {title}
+          <Link href={link}>{title}</Link>
         </Text>
         <Text typo="descript" mt="27px">
           {description}
@@ -31,14 +33,9 @@ export default function PostPreview({
 
 const PostPreviewWrapepr = styled.div`
   width: 900px;
-  margin: 4rem auto;
+  margin: 3rem auto;
   display: flex;
   flex-flow: row wrap;
-`;
-
-const Image = styled.image`
-  width: 140px;
-  height: 140px;
-  margin-right: 4rem;
-  background-color: red;
+  padding: 0.5rem 1rem 1.5rem 2rem;
+  border: 4px black solid;
 `;

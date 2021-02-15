@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Text } from '@/components/atoms';
+import { Text, UnderLineText } from '@/components/atoms';
 import { TextWrapper } from '@/components/molcules';
 import { Page } from '@/constants/pageRoute';
 
@@ -11,13 +11,13 @@ function Header() {
       <Text typo="title">
         <Link href="/">정희수 블로그</Link>
       </Text>
-      <TextWrapper direction="col">
-        <Text typo="subheading" mr="20px">
+      <TextWrapper direction="row">
+        <UnderLineText typo="subheading" mr="20px">
           <Link href={Page.ABOUT.path}>{Page.ABOUT.name}</Link>
-        </Text>
-        <Text typo="subheading" mr="20px">
+        </UnderLineText>
+        <UnderLineText typo="subheading" mr="20px">
           <Link href={Page.CATEGORY.path}>{Page.CATEGORY.name}</Link>
-        </Text>
+        </UnderLineText>
       </TextWrapper>
     </HeaderWrapper>
   );

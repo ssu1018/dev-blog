@@ -1,37 +1,34 @@
-import { getAllPosts, IMatterDataProps, getCategoryPosts } from '@/utils/posts';
+import {
+  getAllPosts,
+  IMatterWithCategory,
+  getCategoryPosts,
+} from '@/utils/posts';
 
 import { Home as HomeTemplate } from '@/components/templates';
-import { categories, TCategoryName } from '@/constants/categories';
+import {
+  categories,
+  TCategoryName,
+  categoryName,
+} from '@/constants/categories';
 
 export type IFeedPostsDataProps = {
-  [key in TCategoryName]: IMatterDataProps[];
+  [key in TCategoryName]: IMatterWithCategory[];
 };
 
 export interface IHomeProps {
-  allPostData: IMatterDataProps[];
-  feedPostsData: IFeedPostsDataProps;
+  allPostData: IMatterWithCategory[];
 }
 
-export default function Home({ allPostData, feedPostsData }: IHomeProps) {
-  return (
-    <HomeTemplate feedPostsData={feedPostsData} allPostData={allPostData} />
-  );
+export default function Home({ allPostData }: IHomeProps) {
+  return <HomeTemplate allPostData={allPostData} />;
 }
 
 export async function getStaticProps() {
   const allPostData = getAllPosts();
-  const feedPostsData: IFeedPostsDataProps = categories.reduce(
-    (x, category) => ({
-      ...x,
-      [category.info.name]: getCategoryPosts(category.info.name),
-    }),
-    {}
-  ) as IFeedPostsDataProps;
 
   return {
     props: {
       allPostData,
-      feedPostsData,
     },
   };
 }

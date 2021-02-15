@@ -1,16 +1,24 @@
 import { css } from '@emotion/react';
-export default css`
-  font-size: 1.2rem;
-  line-height: 2rem;
-  font-family: "'Noto Sans Korean', 'Fira Sans', sans-serif";
+import mq from '@/constants/mediaQuery';
 
+export default css`
+  font-size: 1.1rem;
+  line-height: 1.9rem;
+  font-weight: 500;
+  width: 100%;
+
+  ${mq[0]} {
+    font-size: 1rem;
+    line-height: 1.7rem;
+    word-spacing: -1px;
+  }
   p {
-    margin: 1em 0;
-    font-size: 1.2rem;
     line-height: 2rem;
+    margin-bottom: 2em;
+    font-family: "'Noto Sans Korean', 'Fira Sans', sans-serif";
   }
   a {
-    color: indigo;
+    color: gray;
     outline: 0;
     font-weight: 600;
   }
@@ -31,55 +39,63 @@ export default css`
 
   h1 {
     font-size: 2.5em;
-    margin: 1.5rem 0;
+    margin: 2.5rem 0 0 5rem;
   }
 
   h2 {
     font-size: 2em;
-    margin: 2.5rem 0;
+    margin: 2rem 0;
   }
 
   h3 {
-    margin: 1rem 0 0.7rem 0;
+    margin: 1em 0 0.8em 0;
     font-size: 1.8rem;
   }
 
   h4 {
     font-size: 1.4em;
+    margin: 0.5rem 0;
   }
 
   h5 {
     font-size: 1.2em;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+  }
+
   code {
     font-family: '"Lato",sans-serif';
-    font-size: 1.2rem;
     font-weight: 600;
   }
 
   pre {
     line-height: 1.4rem;
     code {
-      font-size: 0.9rem;
-      background: rgb(39, 44, 53);
-      font-family: 'Fira Code';
-      color: rgb(224, 224, 224);
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      ${mq[0]} {
+        font-size: 0.7rem;
+      }
     }
     background: rgb(39, 44, 53);
     padding: 1.5em;
     margin: 2em 0px;
     overflow: auto;
     border-radius: 0.6em;
-    tab-size: 4;
+    tab-size: 4px;
   }
 
   blockquote {
     color: #666666;
     margin: 0;
     padding-left: 3em;
-    border-left: 0.5em blue solid;
+    border-left: 0.5em gray solid;
   }
 
   hr {
@@ -89,15 +105,6 @@ export default css`
     border-bottom: 1px solid #eee;
     margin: 1em 0;
     padding: 0;
-  }
-
-  kbd,
-  samp {
-    color: #000;
-    font-family: monospace, monospace;
-    _font-family: 'courier new', monospace;
-    font-size: 1rem;
-    line-height: 1.2rem;
   }
 
   b,
@@ -132,7 +139,7 @@ export default css`
 
   ul,
   ol {
-    margin: 0.5rem 0;
+    margin-bottom: 1.5em;
     padding: 0 0 0 1.5rem;
   }
 
