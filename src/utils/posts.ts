@@ -122,7 +122,6 @@ export function getAllPosts(): IMatterDataProps[] {
         const matterData: IMatterDataProps = matter(fileContents)
           .data as IMatterDataProps;
 
-        category = category.toLowerCase();
         return { ...matterData, category };
       })
     )

@@ -40,7 +40,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: ITagPathProps) {
   const postsData = getPostsWtihTag(params.tag);
-  console.log(params.tag);
   return {
     props: {
       postsData,

@@ -34,7 +34,7 @@ export default function Home({ allPostData }: IHomeTemplate) {
     return postsPerPage.map((post) => {
       const { title, description, tags, slug, category } = post;
 
-      const link = `/${category}/${slug}`;
+      const link = `/${category.toLowerCase()}/${slug}`;
       return (
         <PostPreview
           link={link}

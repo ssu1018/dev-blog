@@ -25,20 +25,10 @@ export default function Home({ allPostData }: IHomeProps) {
 
 export async function getStaticProps() {
   const allPostData = getAllPosts();
-  const feedPostsData: IFeedPostsDataProps = categories.reduce(
-    (x, category) => ({
-      ...x,
-      [category.info.name]: getCategoryPosts(
-        category.info.name as categoryName
-      ),
-    }),
-    {}
-  ) as IFeedPostsDataProps;
 
   return {
     props: {
       allPostData,
-      feedPostsData,
     },
   };
 }
