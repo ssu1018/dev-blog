@@ -7,14 +7,22 @@ import styled from '@emotion/styled';
 function Footer() {
   return (
     <FooterWrapper>
-      <FooterItem>Copyright © Jeongheesu All rights reserved</FooterItem>
+      <ItemWrapper>
+        <FooterItem>Copyright © Jeongheesu All rights reserved</FooterItem>
+      </ItemWrapper>
     </FooterWrapper>
   );
 }
 
 const FooterWrapper = styled.footer`
+  display: fix;
+  bottom: 0;
+  transform: translateY(-100%);
+`;
+
+const ItemWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 3rem;
   display: flex;
   flex-flow: row wrap;
   align-items: center;

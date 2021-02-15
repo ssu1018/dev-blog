@@ -128,10 +128,16 @@ export default css`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  html {
-    width: 100%;
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
   }
   a {
     color: black;
+  }
+  #__next {
+    height: 100%; // or min-height
   }
 `;
