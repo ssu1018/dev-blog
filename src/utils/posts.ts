@@ -31,7 +31,9 @@ export interface IPostPathProps {
 
 export const postsDirectory: string = path.join(process.cwd(), 'src', 'posts');
 
-export function getCategoryPosts(category: string): IMatterWithCategory[] {
+export function getCategoryPosts(
+  category: TCategoryName
+): IMatterWithCategory[] {
   const fileNames: string[] = fs.readdirSync(
     path.join(postsDirectory, category)
   );
@@ -41,8 +43,8 @@ export function getCategoryPosts(category: string): IMatterWithCategory[] {
     const fileContents: string = fs.readFileSync(fullPath, 'utf8');
     const matterData: IMatterDataProps = matter(fileContents)
       .data as IMatterDataProps;
-    category = category.toLowerCase();
-    return { ...matterData, category };
+    const lowerCategory = category.toLowerCase();
+    return { ...matterData, category: lowerCategory };
   });
 
   return allPostsData.sort((a, b): number => -a.date.localeCompare(b.date));

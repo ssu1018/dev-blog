@@ -25,9 +25,9 @@ export const categories: ICategoryProp[] = [
 ];
 
 export enum categoryName {
-  AlGORITHM = 'ALGORITHM',
+  ALGORITHM = 'ALGORITHM',
   LIFE = 'LIFE',
-  TECH = 'TECh',
+  TECH = 'TECH',
 }
 
 export type TCategoryName = keyof typeof categoryName;
