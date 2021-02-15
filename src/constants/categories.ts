@@ -6,8 +6,6 @@ export interface ICategoryProp {
   info: IPageProp;
 }
 
-export type TCategoryName = 'ALGORITHM' | 'LIFE' | 'TECH';
-
 export const categories: ICategoryProp[] = [
   {
     title: '알고리즘',
@@ -25,3 +23,11 @@ export const categories: ICategoryProp[] = [
     info: Page.TECH,
   },
 ];
+
+export enum categoryName {
+  AlGORITHM = 'ALGORITHM',
+  LIFE = 'LIFE',
+  TECH = 'TECh',
+}
+
+export type TCategoryName = keyof typeof categoryName;
