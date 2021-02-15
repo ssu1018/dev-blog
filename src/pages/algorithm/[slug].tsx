@@ -8,7 +8,7 @@ import { getCategoryTags } from '@/utils/tags';
 
 import { PostPageTemplate, IPostingProps } from '@/components/templates';
 
-const ALGO = 'AlGORITHM';
+const ALGO = 'ALGORITHM';
 
 export default function Posting({ postData, tags }: IPostingProps) {
   return <PostPageTemplate postData={postData} tags={tags} />;

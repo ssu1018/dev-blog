@@ -7,13 +7,12 @@ interface ITechHomeProps {
 }
 
 export default function Algorithm({ postsData }: ITechHomeProps) {
-  // return <CategoryPageTemplate postsData={postsData} />;
   return <CategoryPostsPage allPostData={postsData} />;
 }
 
 export async function getStaticProps() {
   const postsData: IMatterWithCategory[] = getCategoryPosts(
-    categoryName.AlGORITHM
+    categoryName.ALGORITHM
   );
   return {
     props: {

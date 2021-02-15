@@ -5,7 +5,11 @@ import {
 } from '@/utils/posts';
 
 import { Home as HomeTemplate } from '@/components/templates';
-import { categories, TCategoryName } from '@/constants/categories';
+import {
+  categories,
+  TCategoryName,
+  categoryName,
+} from '@/constants/categories';
 
 export type IFeedPostsDataProps = {
   [key in TCategoryName]: IMatterWithCategory[];
@@ -24,7 +28,9 @@ export async function getStaticProps() {
   const feedPostsData: IFeedPostsDataProps = categories.reduce(
     (x, category) => ({
       ...x,
-      [category.info.name]: getCategoryPosts(category.info.name),
+      [category.info.name]: getCategoryPosts(
+        category.info.name as categoryName
+      ),
     }),
     {}
   ) as IFeedPostsDataProps;
