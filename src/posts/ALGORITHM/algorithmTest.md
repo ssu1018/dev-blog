@@ -1,8 +1,16 @@
 ---
-title: '디바운스 vs 쓰로틀'
-date: '2020-02-16'
+title: 'Debounce vs throttle'
+date: '2021-02-16'
 description: '알고리즘 카테고리 검증'
 slug: 'algorithmTest'
-tags: 'first,tagOk,gg'
+tags: 'debounce,throttle,event'
 ---
+
+## Debounce
+
+디바운스는 ~~
+
+## Throttle
+
+쓰로틀은 ~~
 
