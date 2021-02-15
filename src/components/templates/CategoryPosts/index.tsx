@@ -8,7 +8,7 @@ interface IHomeTemplate {
   allPostData: IMatterWithCategory[];
 }
 
-export default function Home({ allPostData }: IHomeTemplate) {
+export default function CategoryPosts({ allPostData }: IHomeTemplate) {
   const [postsPerPage, setPostsPerPage] = useState(
     allPostData.slice(0, MaxPerPage)
   );
