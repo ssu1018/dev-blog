@@ -1,8 +1,6 @@
 import { Text } from '@/components/atoms';
-import { TagWrapper } from '@/components/molcules';
+import { TagWrapper, TextWrapper } from '@/components/molcules';
 import { Tag } from '@/components/molcules';
-import styled from '@emotion/styled';
-
 interface IPostHeadingProps {
   postTitle: string;
   postTag: string;
@@ -14,12 +12,16 @@ export default function PostHeading({
   postTag,
   date,
 }: IPostHeadingProps) {
-  const renderedTag = postTag.split(',').map((tag) => <Tag tag={tag} />);
+  const renderedTag = postTag
+    .split(',')
+    .map((tag) => <Tag tag={tag} key={tag} />);
 
   return (
     <div>
       <Text typo="postTitle">{postTitle}</Text>
-      <Text typo="title">{date}</Text>
+      <Text typo="subheading" mt="20px">
+        {date}
+      </Text>
       <TagWrapper>{renderedTag}</TagWrapper>
     </div>
   );

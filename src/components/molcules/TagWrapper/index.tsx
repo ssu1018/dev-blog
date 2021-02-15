@@ -7,7 +7,7 @@ interface ITagWrapperProps {
 }
 
 export const renderedTags = (tags: string) =>
-  tags.split(',').map((tag) => <Tag tag={tag} />);
+  tags.split(',').map((tag) => <Tag key={tag} tag={tag} />);
 
 export default function TagWrapper({ children }: ITagWrapperProps) {
   return <DefaultTagWrapper>{children}</DefaultTagWrapper>;

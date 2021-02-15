@@ -8,7 +8,7 @@ interface IHomeTemplate {
   allPostData: IMatterWithCategory[];
 }
 
-export default function Home({ allPostData }: IHomeTemplate) {
+export default function CategoryPosts({ allPostData }: IHomeTemplate) {
   const [postsPerPage, setPostsPerPage] = useState(
     allPostData.slice(0, MaxPerPage)
   );
@@ -34,7 +34,7 @@ export default function Home({ allPostData }: IHomeTemplate) {
     return postsPerPage.map((post) => {
       const { title, description, tags, slug, category } = post;
 
-      const link = `/${category.toLowerCase()}/${slug}`;
+      const link = `/${category}/${slug}`;
       return (
         <PostPreview
           link={link}

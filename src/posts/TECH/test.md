@@ -3,7 +3,7 @@ title: 'Two Forms of Pre-rendering'
 date: '2020-01-01'
 description: '오늘은 어떻게 제가 글을 썼는 지 공유합니다.'
 slug: 'test'
-tags: 'test,tagOk,a, as, sdf,basdg, asdq,as, asdf '
+tags: 'test,tagOk,react,redux '
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
@@ -23,4 +23,16 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 function test(){
   console.log("hi")
 }
+```
+
+```javascript
+export async function getStaticProps() {
+  const postsData: IMatterWithCategory[] = getCategoryPosts(categoryName.LIFE);
+  return {
+    props: {
+      postsData,
+    },
+  };
+}
+
 ```
