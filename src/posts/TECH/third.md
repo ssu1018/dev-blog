@@ -3,7 +3,7 @@ title: 'asdf reconciler'
 date: '2019-01-03'
 description: '오늘은 어떻게 제가 글을 썼는 지 공유합니다.'
 slug: 'third'
-tags: 'test,tagOk,gg'
+tags: 'test,redux,gg'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.

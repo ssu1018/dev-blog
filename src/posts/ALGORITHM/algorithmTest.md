@@ -78,7 +78,7 @@ module.exports = () => {
 
 개발 환경 구축 중 여러 삽질을 했었는데 그 중 하나는 TypeScript 환경에서 absolute path 관련 config를 적용하는 부분이었다. 위 `craco.config.js` 파일에서 7번째에 해당하는 부분이다. 이 부분은 삽질을 너무 많이해서 따로 정리를 해둔 [이슈](https://github.com/JaeYeopHan/tip-archive/issues/60)도 있다. Jest와도 엮이면 문제가 더 골치아파진다.
 
-### 후회없는 선택 CRA,
+### 후회없는 선택 CRA
 
 CRA를 사용하든 사용하지 않든 개발 환경 구축과 관련된 문제는 반드시 만나게 된다. CRA를 쓰면 그 문제의 수를 줄일 수 있다고 생각한다. 또한 프로젝트가 장기적으로 진행될 경우, 여러 dependency들의 version을 따라가는 것을 생각하면 정말... (CRA를 사용할 때마다 느끼는 거지만 [vue-cli](https://github.com/vuejs/vue-cli)는 참 잘 만들었다.)
 

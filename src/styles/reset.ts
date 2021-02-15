@@ -131,4 +131,7 @@ export default css`
   html {
     width: 100%;
   }
+  a {
+    color: black;
+  }
 `;

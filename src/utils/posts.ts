@@ -19,6 +19,10 @@ export interface IPostDataProps extends IMatterDataProps {
   contentHtml: string;
 }
 
+export interface IMatterWithCategory extends IMatterDataProps {
+  category: string;
+}
+
 export interface IPostPathProps {
   params: {
     slug: string;
@@ -27,17 +31,18 @@ export interface IPostPathProps {
 
 export const postsDirectory: string = path.join(process.cwd(), 'src', 'posts');
 
-export function getCategoryPosts(categoryName: string): IMatterDataProps[] {
+export function getCategoryPosts(category: string): IMatterWithCategory[] {
   const fileNames: string[] = fs.readdirSync(
-    path.join(postsDirectory, categoryName)
+    path.join(postsDirectory, category)
   );
 
-  const allPostsData = fileNames.map((fileName) => {
-    const fullPath: string = path.join(postsDirectory, categoryName, fileName);
+  const allPostsData: IMatterWithCategory[] = fileNames.map((fileName) => {
+    const fullPath: string = path.join(postsDirectory, category, fileName);
     const fileContents: string = fs.readFileSync(fullPath, 'utf8');
     const matterData: IMatterDataProps = matter(fileContents)
       .data as IMatterDataProps;
-    return matterData;
+    category = category.toLowerCase();
+    return { ...matterData, category };
   });
 
   return allPostsData.sort((a, b): number => -a.date.localeCompare(b.date));
@@ -107,7 +112,7 @@ export function getAllPosts(): IMatterDataProps[] {
     {}
   );
 
-  const allPostsData: IMatterDataProps[] = Object.entries(categoriesObj)
+  const allPostsData: IMatterWithCategory[] = Object.entries(categoriesObj)
     .map(([category, files]) =>
       files.map((fileName) => {
         const fullPath: string = path.join(postsDirectory, category, fileName);
@@ -115,7 +120,8 @@ export function getAllPosts(): IMatterDataProps[] {
         const matterData: IMatterDataProps = matter(fileContents)
           .data as IMatterDataProps;
 
-        return matterData;
+        category = category.toLowerCase();
+        return { ...matterData, category };
       })
     )
     .flat();
